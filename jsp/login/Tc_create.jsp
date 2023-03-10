@@ -8,10 +8,11 @@
 <html>
 <%
 request.setCharacterEncoding("UTF-8");
+SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
+TcMapper TcMapper = sqlSession.getMapper(TcMapper.class);
+List<String> tempList = TcMapper.selectAllMail();
 if(request.getMethod().equalsIgnoreCase("POST"))    {
-    SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
     try {
-    	TcMapper TcMapper = sqlSession.getMapper(TcMapper.class);
     	String subtype = request.getParameter("subtype");
     	if(subtype.equals("create"))   {
     		System.out.println("gogogo");
@@ -26,11 +27,34 @@ if(request.getMethod().equalsIgnoreCase("POST"))    {
     		tc.setTc_gender(request.getParameter("gender"));
     		TcMapper.insertTc(tc);
     	}
+    	else if(subtype.equals("checkID")) {
+    		System.out.println("aoaoaoao");
+    		Tc tc = new Tc();
+    		String email = request.getParameter("used_id");
+    		String temp = TcMapper.loginTc(email);
+    		if(temp == "" || temp == null)    {
+	    		%>
+	    		<script type="text/javascript">
+	    		alert("성공");
+	    		<%
+    		}
+    		else{
+    			%>
+                <script type="text/javascript">
+                alert("실패");
+                <%
+    		}
+    	}
     } finally {
         sqlSession.close();
+       %>
+       <script type = "text/javascript">
+       alert("교직원 추가 성공");
+       location.href="Tc_login.jsp";
+       </script>
+       <%
     }
 }
-
 %>
     <head>
         <meta charset="UTF-8">
@@ -44,11 +68,22 @@ if(request.getMethod().equalsIgnoreCase("POST"))    {
     </head>
     <body>
         <script type = "text/javascript">
+        var openWin;
+        function openChild()    {
+        	window.name="parentForm";
+        	openWin = window.open("Child.jsp", "childForm", "width=570, height=350, resizeable=no, scrollbars=no");
+        }
+        
+        function setChildText(){
+        	openWin.document.getElementById("cInput").value = document.getElementById("document.create.user_id").value;
+        }
+        
             function pwcheck(a, b){
-                var form = document.create;
-
                 if(a.value != b.value)  {
                     alert("비밀번호가 일치하지 않습니다!");
+                }
+                else if(a.value.length < 4 || b.value.length < 4)   {
+                	alert("비밀번호는 4자리 이상이어야 합니다.")
                 }
                 else    {
                     alert("비밀번호가 일치합니다!");
@@ -90,32 +125,40 @@ if(request.getMethod().equalsIgnoreCase("POST"))    {
                 
                 if(size_chk.toString().length < 4)  {
                     alert("비밀번호는 최소 4글자 이상이어야 합니다.");
+                    document.create.user.pw.focus();
                     return false;
                 }
                 else if(size_chk.toString().length > 3)    {
                     return true;
                 }
             }
-
+            
+            
+            
             function value_check() {
                 if(!document.create.user_id.value)    {
                     alert("아이디(메일)을 입력하세요!");
+                    document.create.user_id.focus();
                     return false;
                 }
                 else if(!document.create.user_pw.value)   {
                     alert("비밀번호를 입력하세요!");
+                    document.create.user_pw.focus();
                     return false;
                 }
                 else if(!document.create.user_name.value)   {
                     alert("이름을 입력하세요!");
+                    document.create.user_name.focus();
                     return false;
                 }
                 else if(!document.create.user_phone.value)   {
                     alert("전화번호를 입력하세요!");
+                    document.create.user_phone.focus();
                     return false;
                 }
                 else if(!document.create.email.value)   {
                     alert("메일을 완성하세요!");
+                    document.create.email.focus();
                     return false;
                 }
                 else    {
@@ -125,7 +168,6 @@ if(request.getMethod().equalsIgnoreCase("POST"))    {
             
 
         </script>
-        
         <br>
         <fieldset>
             <center>
@@ -148,7 +190,10 @@ if(request.getMethod().equalsIgnoreCase("POST"))    {
                                     <option value = "gmail.com">gmail.com</option>
                                     <option value = "kakao.com">kakao.com</option>
                                 </select>
-                                <input type="button" style="WIDTH: 50pt; HEIGHT: 20pt" value="중복확인"/>
+                                
+                                
+                                <input type="button" style="WIDTH: 50pt; HEIGHT: 20pt" onClick="setChildText()" value="중복확인"/>
+                                <input type="button" value="자식창 열기" onclick="openChild()"><br>
                             </td>
                         </tr>
                     
@@ -185,9 +230,9 @@ if(request.getMethod().equalsIgnoreCase("POST"))    {
 									%>
                                         <option value="<%=i%>"><%=i%></option>
 									<%
-									}
-									%> 
-                                    
+									} 
+									%>
+									                                
                                     
                                   </select>
                                   <select id="signupMonth" name="signupMonth" value="월">
