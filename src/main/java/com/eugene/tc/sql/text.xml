@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+ <!-- member에서 student로 바꿈 -->
+
+<mapper namespace="Testt">
+   <select id="retrieveCheck" parameterType="TeacherItem" resultType="TeacherItem">
+        SELECT tc_name as tcName, 
+               tc_mail as tcMail, 
+               tc_phone as tcPhone
+          FROM tc
+        <if test = "tcName != null or tcName == ''">
+         WHERE tc_name LIKE CONCAT('%', #{tcName}, '%')
+        </if>
+   </select>
+    
+   <select id="teacherInform" parameterType="TeacherItem" resultType="TeacherItem">
+       SELECT tc_name as tcName,
+              tc_mail as tcMail,
+              tc_date as tcDate,
+              tc_gender as tcGender,
+              tc_phone as tcPhone,
+              tc_memo as tcMemo,
+              tc_pw as tcPw
+         FROM tc
+         WHERE tc_mail = #{tcMail}
+   </select>
+   
+    <delete id="teacherDelete" parameterType="TeacherItem">
+       DELETE     
+         FROM tc
+         WHERE tc_mail = #{tcMail}
+   </delete>
+   <update id="teacherUpdate" parameterType="TeacherItem" >
+       UPDATE     
+         tc
+        SET
+         tc_name = #{tcName},
+         tc_mail = #{tcMail}, 
+         tc_date = #{tcDate}, 
+         tc_gender = #{tcGender}, 
+         tc_phone = #{tcPhone}, 
+         tc_memo = #{tcMemo}, 
+         tc_pw = #{tcPw}   
+         WHERE tc_mail = #{tcMail}
+   </update>
+   <!-- <select id="getCount" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            student
+    </select>  
+
+    <select id="getID" resultType="string">
+        SELECT
+            st_id
+        FROM
+            student
+       
+    </select>
+    <select id="getID" resultType="string">
+        SELECT
+            st_id
+        FROM
+            student
+       
+    </select>
+
+    <select id="getPW" resultType="string">.
+        SELECT
+            password(password)
+        FROM
+            student
+    </select>
+
+     <select id="getCountP" parameterType="hashmap" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            student
+        WHERE
+            st_name = #{name}
+    </select>  --> 
+    
+    <!--  
+    <select id="retrieveLogin" parameterType="StudentBean" resultType="StudentBean">
+        SELECT
+            st_id as stId, st_name as stNmd, password as stPwd
+        FROM
+            student
+        WHERE
+            st_id = #{stId} and password = password(#{stPwd})
+    </select>
+    
+   <insert id="retrieveMember" parameterType="StudentBean">
+       INSERT INTO student(st_name, st_year, password) VALUES (#{stNmd}, #{stDat}, password(#{stPwd}))
+   </insert>
+   
+   <delete id="deletelist">
+       DELETE FROM student where name = #{name}
+   </delete>
+    -->
+   
+</mapper>
