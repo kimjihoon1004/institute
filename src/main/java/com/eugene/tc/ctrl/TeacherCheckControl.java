@@ -1,21 +1,21 @@
-package com.eugen.tc.ctrl;
+package com.eugene.tc.ctrl;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.eugen.common.db.SqlSessionManager;
-import com.eugen.tc.bean.TeacherItem;
+import com.eugene.common.db.SqlSessionCtrl;
+import com.eugene.tc.item.TeacherItem;
 
 import java.util.ArrayList;
 
-public class TeacherCheckControl extends SqlSessionManager {
+public class TeacherCheckControl extends SqlSessionCtrl {
 	
 	public List<TeacherItem> searchName(TeacherItem teacheritem) {
 		List<TeacherItem> teacherItems = new ArrayList<TeacherItem>();
 		SqlSession session = null;
 		
 		try {
-			session = sqlSession.openSession();
+			session = sqlSessionFactory.openSession();
 			teacherItems = session.selectList("Testt.retrieveCheck", teacheritem);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -31,7 +31,7 @@ public class TeacherCheckControl extends SqlSessionManager {
 		SqlSession session = null;
 		
 		try {
-			session = sqlSession.openSession();
+			session = sqlSessionFactory.openSession();
 			teacherItems = session.selectOne("Testt.teacherInform", teacheritem);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class TeacherCheckControl extends SqlSessionManager {
 		SqlSession session = null;
 		
 		try {
-			session = sqlSession.openSession();
+			session = sqlSessionFactory.openSession();
 			teacherItems = session.selectOne("Testt.teacherDelete", teacheritem);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class TeacherCheckControl extends SqlSessionManager {
 		SqlSession session = null;
 		
 		try {
-			session = sqlSession.openSession();
+			session = sqlSessionFactory.openSession();
 			teacherItems = session.selectOne("Testt.teacherUpdate", teacheritem);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -85,7 +85,7 @@ public class TeacherCheckControl extends SqlSessionManager {
 	{
 		List<TeacherItem> Item = new ArrayList<TeacherItem>();
 		
-		try(SqlSession session = sqlSession.openSession()){
+		try(SqlSession session = sqlSessionFactory.openSession()){
 			Item = session.selectList("Testt.retrieveCheck");
 			  }
 		return Item;
@@ -96,7 +96,7 @@ public class TeacherCheckControl extends SqlSessionManager {
 		// StudentBean Bean = new StudentBean();
 		int result;
 		
-		try(SqlSession session = sqlSession.openSession()){
+		try(SqlSession session = sqlSessionFactory.openSession()){
 			result = session.insert("Testt.retrieveCheck", teacherItem);
 			  }
 		return result;
