@@ -23,7 +23,7 @@
 <%
 
 String name = request.getParameter("name");
-String mail = request.getParameter("mail");
+String id = request.getParameter("id");
 String date = request.getParameter("date");
 String gender = request.getParameter("gender");
 String phone = request.getParameter("phone");
@@ -35,7 +35,7 @@ List<TeacherItem> items = new ArrayList<TeacherItem>();
 TeacherCheckControl control = new TeacherCheckControl();
 
 tItem.setName(name);
-tItem.setMail(mail);
+tItem.setId(id);
 tItem.setDate(date);
 tItem.setGender(gender);
 tItem.setPhone(phone);
@@ -46,7 +46,7 @@ tItem.setPw(pw);
 
 if (tItem != null){
 	session.setAttribute("name", name);
-	session.setAttribute("mail", mail);
+	session.setAttribute("id", id);
 	session.setAttribute("date", date);
 	session.setAttribute("gender", gender);
 	session.setAttribute("phone", phone);
@@ -57,7 +57,7 @@ if (tItem != null){
 	
 	<script>
 	alert("입력 성공");
-	location.href="teacherInformation.jsp?name=<%=tItem.getMail() %>";
+	location.href="teacherInformation.jsp?name=<%=tItem.getId() %>";
 	</script>
 <%
 	

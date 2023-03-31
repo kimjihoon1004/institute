@@ -27,20 +27,20 @@
 	 <form action = "teacherUpdateform.jsp">
      
 <% 
-String mail = request.getParameter("name");
-System.out.print("teacher information2 : "+ mail);
+String id = request.getParameter("name");
+System.out.print("teacher information2 : "+ id);
 TeacherItem tItem = new TeacherItem();
 
 TeacherCheckControl control = new TeacherCheckControl();
 
-tItem.setMail(mail);
+tItem.setId(id);
 tItem = control.teacherInformation(tItem);
 
 %> 
      이름 : 
      <input type="text" name="name" value= <%= tItem.getName() %>><br>
      아이디(메일) :
-      <input type="text" name="mail" value= <%= tItem.getMail() %>><br>
+      <input type="text" name="id" value= <%= tItem.getId() %>><br>
      생년월일 : 
       <input type="text" name="date" value= <%= tItem.getDate() %>><br>
      성별 :

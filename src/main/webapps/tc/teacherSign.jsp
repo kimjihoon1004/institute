@@ -59,11 +59,11 @@ String c = "";
 for(int i = 0; i<items.size(); i++)
 {
 	a = items.get(i).getName();
-	b = items.get(i).getMail();
+	b = items.get(i).getId();
 	c = items.get(i).getPhone();
 %>
  			<tr>  
- 			    <td><a href="teacherInformation.jsp?name=<%=items.get(i).getMail() %>"><%=a %></a></td>
+ 			    <td><a href="teacherInformation.jsp?name=<%=items.get(i).getId() %>"><%=a %></a></td>
  			    <td><%=b %></td>
  			    <td><%=c %></td>
  			     <td><button type = "button" href="teacherSign.jsp" onclick="alert('해당 교직원의 가입을 승인하였습니다.')">승인</button>

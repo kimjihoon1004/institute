@@ -58,7 +58,7 @@ if (null != name)
         </script>
         <%
 		tItem.getName();
-		tItem.getMail();
+		tItem.getId();
 		tItem.getPhone();
 			
 	}
@@ -67,7 +67,7 @@ if (null != name)
 else if(null == name || name == ""){ // 빈칸에 아무것도 입력을 안했을 경우 모든 리스트의 값을 가져오기
 
 	    tItem.getName();
-		tItem.getMail();
+		tItem.getId();
 		tItem.getPhone();
 		
 }
@@ -91,11 +91,11 @@ String c = "";
 for(int i = 0; i<items.size(); i++)
 {
 	a = items.get(i).getName();
-	b = items.get(i).getMail();
+	b = items.get(i).getId();
 	c = items.get(i).getPhone();
 %>
  			<tr>  
- 			    <td><a href="teacherInformation.jsp?name=<%=items.get(i).getMail() %>"><%=a %></a></td>
+ 			    <td><a href="teacherInformation.jsp?name=<%=items.get(i).getId() %>"><%=a %></a></td>
  			    <td><%=b %></td>
  			    <td><%=c %></td>
  			</tr>

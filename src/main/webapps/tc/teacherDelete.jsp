@@ -28,7 +28,7 @@ String mail = request.getParameter("name");
 TeacherItem tItem = new TeacherItem();
 TeacherCheckControl control = new TeacherCheckControl();
 
-tItem.setMail(mail);
+tItem.setId(mail);
 tItem = control.teacherDelete(tItem);
 %>
 
