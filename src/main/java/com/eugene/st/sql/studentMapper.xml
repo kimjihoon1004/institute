@@ -38,7 +38,7 @@
     
     <update id="updateStudent" parameterType="StudentItem">
     	UPDATE st SET st_name = #{stName},
-    	st_phone=#{stPhone}
+    	st_phone=#{stPhone},
     	st_school = #{stSchool},
     	st_parents = #{stParents},
     	st_date = #{stDate},
