@@ -39,7 +39,7 @@
 				stBean = stCtrl.retireveStudent(stBean);
 		}
 		%>
-			<form action="stUpdateCheck.jsp">
+			<form action="stAddCheck.jsp">
 				이름 <input type="text" name="name" value="<%= stBean.getStName() %>" required/> <br> <br>
 				전화번호 <input type="text" name="phone" value="<%= stBean.getStPhone() %>" required/> <br> <br>
 				부모님 전화번호 <input type="text" name="parents" value="<%= stBean.getStParents() %>" required/> <br> <br>
