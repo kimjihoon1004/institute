@@ -23,7 +23,6 @@
 		
 		if(Id == null || Id == ""){
 				// insert student
-		%>
 			stBean.setStName("");
 			stBean.setStPhone("");
 			stBean.setStSchool("");
@@ -32,7 +31,7 @@
 			stBean.setStGender("");
 			stBean.setStAddress("");
 			stBean.setStMemo("");
-		<%
+		
 		}else{
 				// update student
 				
