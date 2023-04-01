@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.eugene.st.ctrl.StudentCtrl" %>
 <%@ page import="com.eugene.st.item.StudentItem" %>
+<%@ include file="../include/sessionCheck.inc" %>
+<%@ include file="../include/top.inc" %>
 <!DOCTYPE html>
 <html>
 	<head>
