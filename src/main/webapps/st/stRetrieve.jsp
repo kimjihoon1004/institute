@@ -5,6 +5,9 @@
 <%@ page import = "com.eugene.st.item.StudentItem" %>
 <%@ page import = "java.util.List" %>
 <%@ page import = "java.util.ArrayList" %>
+<%@ include file="../include/sessionCheck.inc" %>
+<%@ include file="../include/top.inc" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
