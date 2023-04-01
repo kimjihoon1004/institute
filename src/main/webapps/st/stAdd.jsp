@@ -50,31 +50,27 @@
 				여자 <input type="radio" name="gender" value="f" />
 				<br> <br>
 				주소 <input type="text" name="address" value="<%= stBean.getStAddress() %>" required/> <br> <br>
+				요일 <br>
+				월 <input type="checkbox" id="monday" name="day" value="0" />&nbsp;
+				화 <input type="checkbox" id="tuseday" name="day" value="1" />&nbsp;
+				수 <input type="checkbox" id="wednesday" name="day" value="2" />&nbsp;
+				목 <input type="checkbox" id="thursday" name="day" value="3" />&nbsp;
+				금 <input type="checkbox" id="friday" name="day" value="4" />&nbsp;
+				<br>
+				<br>
+			    	과목 <br>
+				JAVA <input type="checkbox" id="JAVA" name="course" value="0" />&nbsp;
+				C++ <input type="checkbox" id="C++" name="course" value="1" />&nbsp;
+				PYTHON <input type="checkbox" id="PYTHON" name="course" value="2" />&nbsp;
+				SCRATCH <input type="checkbox" id="SCRATCH" name="course" value="3" />&nbsp;
+				<br><br>
 				비고 <input type="text" name="memo" value="<%= stBean.getStMemo() %>" /> <br> <br> <br>
 				<input type="hidden" name="prePhone" value="<%= stBean.getStPhone() %>"/>
 				
 				<input type="button" value="취소" onclick="location.href='stRetrieve.jsp'"/>
 				<input type="submit" value="저장"/>
 			</form>
-		<%
 		
-			// vector<string> s();
-			// string st
-			// char ch;
-			
-			// ifstream in()
-			
-			// if (in.file_open()){
-			//     ch << in.get();
-			//     st.append(ch)
-			//     
-			//     if(st == "\n"){
-			//	       s.push_back(st);
-			// 			//st 초기화
-			//     }
-			//
-			// }else(error){} 			       
-		%>
 		
 	</body>
 </html>
