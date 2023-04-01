@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../include/sessionCheck.inc" %>
+<%@ include file="../include/top.inc" %>
 <%@ page import="com.eugene.st.ctrl.StudentCtrl" %>
 <%@ page import="com.eugene.st.item.StudentItem" %>
 <!DOCTYPE html>
