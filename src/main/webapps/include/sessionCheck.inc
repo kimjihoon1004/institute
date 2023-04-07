@@ -9,9 +9,9 @@ pageEncoding="UTF-8"%>
 <body>
     <%
     request.setCharacterEncoding("UTF-8");
-    String id = (String) session.getAttribute("id");
+    String iidCheck = (String) session.getAttribute("iid");
     
-    if(id == null || id == "")  {
+    if(iidCheck == null || iidCheck == "")  {
         %>
         <script>
         alert("로그인 후 사용하세요.");
