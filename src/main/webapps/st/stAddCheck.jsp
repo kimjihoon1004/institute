@@ -53,7 +53,7 @@
                 %>
                 <script type="text/javascript">
                 alert("추가 오류!");
-                location.href="stAdd.jsp?phone="<%=phone%>;
+                location.href="stAdd.jsp?id="<%=id%>;
                 </script>
                 <%
             }
