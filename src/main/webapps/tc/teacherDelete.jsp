@@ -11,6 +11,7 @@
 <%@page import="java.util.ArrayList" %>
 <%@ include file="../include/sessionCheck.inc" %>
 <%@ include file="../include/top.inc" %>
+<%@ include file="../include/suCheck.inc" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
