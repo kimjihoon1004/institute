@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.eugene.crs.ctrl.CrsCtrl" %>
 <%@ page import="com.eugene.crs.item.CrsItem" %>
+<%@ include file="../include/top.inc" %>
 <%@ include file="../include/sessionCheck.inc" %>
 <%@ include file="../include/suCheck.inc" %>
 <!DOCTYPE html>
