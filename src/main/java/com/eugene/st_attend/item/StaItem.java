@@ -5,8 +5,14 @@ public class StaItem {
 	private String staIn;
 	private String staOut;
 	private String staAbsent;
-	private String staPhone;
+	private String staAttendId;
 	
+	public String getStaAttendId() {
+		return staAttendId;
+	}
+	public void setStaAttendId(String staAttendId) {
+		this.staAttendId = staAttendId;
+	}
 	public String getStaId() {
 		return staId;
 	}
@@ -31,11 +37,6 @@ public class StaItem {
 	public void setStaAbsent(String staAbsent) {
 		this.staAbsent = staAbsent;
 	}
-	public String getStaPhone() {
-		return staPhone;
-	}
-	public void setStaPhone(String staPhone) {
-		this.staPhone = staPhone;
-	}
+	
 	
 }
