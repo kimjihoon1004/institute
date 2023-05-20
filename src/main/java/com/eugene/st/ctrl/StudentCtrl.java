@@ -48,6 +48,22 @@ public class StudentCtrl extends SqlSessionCtrl{
 		return st;
 	}
 	
+	public String selectStudent(String stId)	{
+		String temp = "";
+		try(SqlSession session = sqlSessionFactory.openSession())	{
+			temp = session.selectOne("StudentInfor.selectStudent", stId);
+		}
+		return temp;
+	}
+	
+	public String selectStudentSchool(String stId)	{
+		String temp = "";
+		try(SqlSession session = sqlSessionFactory.openSession())	{
+			temp = session.selectOne("StudentInfor.selectStudentSchool", stId);
+		}
+		return temp;
+	}
+	
 	public int insertStudent(StudentItem stBean) {
 		int success = -1;
 		SqlSession session = null;
