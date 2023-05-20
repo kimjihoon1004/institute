@@ -53,6 +53,11 @@
          tc_pw = #{tcPw}   
          WHERE tc_Id = #{tcId}
    </update>
+   
+   <select id="retrieveTeacher" resultType="TeacherItem">
+        SELECT tc_name as tcName, tc_id as tcId
+        FROM tc;
+   </select>
   
    
 </mapper>
