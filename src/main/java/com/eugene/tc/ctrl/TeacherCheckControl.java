@@ -101,5 +101,15 @@ public class TeacherCheckControl extends SqlSessionCtrl {
 			  }
 		return result;
 	}
+	
+	public List<TeacherItem> retrieveTeacher()	{
+		List<TeacherItem> temp = new ArrayList<TeacherItem>();
+		
+		try(SqlSession session = sqlSessionFactory.openSession())	{
+			temp = session.selectList("Testt.retrieveTeacher");
+		}
+		
+		return temp;
+	}
 
 }
