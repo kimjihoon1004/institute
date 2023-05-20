@@ -15,7 +15,6 @@
 	<title>Student retrieve page</title>
 	</head>
 	<body>
-	
 		<%
 		StudentCtrl stCtrl = new StudentCtrl();
 			List<StudentItem> stBean = new ArrayList<StudentItem>();
@@ -45,15 +44,17 @@
 		%>
 		
 		
-		
+		<br>
+		<br>
 		<form action="stRetrieve.jsp">
+		 <center>
 		 <input type="text" name="textSerch" value="이름을 입력하세요"/>
 		 
 		 <input type="submit" value="serch" align="center"/>
 		 <input type="button" value="추가" onclick="location.href='stAdd.jsp'"/>
 		</form>
 		
-		<table border="1" bordercolor="blue" width="200" height="100">
+		<table border="1" bordercolor="blue" width="300" height="100">
 			<tr>
 				<th>번호</th> <th>이름</th> <th>학교</th>
 			</tr>
@@ -75,6 +76,7 @@
 			}
 		%>
 		</table>
+		</center>
 		
 	</body>
 </html>
