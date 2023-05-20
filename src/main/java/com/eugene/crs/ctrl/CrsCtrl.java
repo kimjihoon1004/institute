@@ -41,7 +41,17 @@ public class CrsCtrl extends SqlSessionCtrl{
 			}
 			return crsItem;
 		}
-	
+	  
+	  public List<CrsItem> retrieveCrsName()	{
+			List<CrsItem> crsBean = new ArrayList<CrsItem>();
+			
+			try(SqlSession session = sqlSessionFactory.openSession())	{
+				crsBean = session.selectList("CrsInfor.retrieveCrsName");
+			}
+			return crsBean;
+		}
+	  
+	  
 	public CrsItem retrieveCrs(int x) {
 		CrsItem crsItem = new CrsItem();
 		SqlSession session = null;
@@ -78,6 +88,8 @@ public class CrsCtrl extends SqlSessionCtrl{
 		}
 		return success;
 	}
+	
+	
 	
 	public int updateCrs(CrsItem crsItem) {
 		int success = -1;
