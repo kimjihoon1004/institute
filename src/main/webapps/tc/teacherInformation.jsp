@@ -26,7 +26,7 @@
 	<h1> 교직원 정보 </h1>
 
 <% 
-String id = request.getParameter("name");
+String id = request.getParameter("id");
 
 System.out.print("teacher information : "+ id);
 TeacherItem tItem = new TeacherItem();
@@ -48,8 +48,8 @@ tItem = control.teacherInformation(tItem);
      메모사항 : <%= tItem.getMemo() %><br>
      비밀번호 : <%= tItem.getPw() %><br>
 
-<button onclick="location.href='teacherUpdate.jsp?name=<%=tItem.getId() %>'">수정하기</button>
-<button onclick="location.href='teacherDelete.jsp?name=<%=tItem.getId() %>'">탈퇴하기</button>
+<button onclick="location.href='teacherUpdate.jsp?id=<%=tItem.getId() %>'">수정하기</button>
+<button onclick="location.href='teacherDelete.jsp?id=<%=tItem.getId() %>'">탈퇴하기</button>
 <button type="button" onclick="location.href='teacherCheck.jsp'">뒤로가기</button>
 </body>
 </html>
