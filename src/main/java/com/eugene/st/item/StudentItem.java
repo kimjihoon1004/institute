@@ -6,6 +6,7 @@ public class StudentItem {
 	 * stMemo는 학생정보의 비고란을 의미합니다.
 	 */
 	private int stId;
+	private int stFee;
 	private String stPhone;
 	private String stName;
 	private String stSchool;
@@ -14,6 +15,7 @@ public class StudentItem {
 	private String stGender;
 	private String stAddress;
 	private String stMemo;
+	private String stEnroll;
 	
 	// st_id
 	public void setStId(int id) {
@@ -21,6 +23,20 @@ public class StudentItem {
 	}
 	public int getStId() {
 		return stId;
+	}
+	
+	public int getStFee() {
+		return stFee;
+	}
+	public void setStFee(int stFee) {
+		this.stFee = stFee;
+	}
+	// st_enroll
+	public void setStEnroll(String enroll)	{
+		stEnroll = enroll;
+	}
+	public String getStEnroll()	{
+		return stEnroll;
 	}
 	
 	// st_phone
