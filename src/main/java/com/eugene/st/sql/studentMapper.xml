@@ -20,7 +20,7 @@
     <select id="PartialRetrieveStudentList" parameterType="string" resultType="StudentItem">
         SELECT st_name as stName, st_school as stSchool, st_id as stId
         FROM st
-    	WHERE st_name LIKE CONCAT('%', #{stName}, '%') 
+    	WHERE st_name LIKE CONCAT('%', #{stName}, '%') AND st_out IS NULL
     </select>
     
     <select id="retrieveStudent" parameterType="StudentItem" resultType="StudentItem">
