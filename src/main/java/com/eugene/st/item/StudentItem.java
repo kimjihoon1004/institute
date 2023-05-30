@@ -6,16 +6,18 @@ public class StudentItem {
 	 * stMemo는 학생정보의 비고란을 의미합니다.
 	 */
 	private int stId;
-	private int stFee;
+	private int stFee; // 학생이 납부 해야 할 원비 금
 	private String stPhone;
 	private String stName;
 	private String stSchool;
 	private String stParents;
-	private String stDate;
+	private String stDate; // 학생이 학원에 등록한 날짜
 	private String stGender;
 	private String stAddress;
 	private String stMemo;
-	private String stEnroll;
+	private String stDateMemo; // 원비 납부 날짜가 임이로 변경될 경우
+	
+	
 	
 	// st_id
 	public void setStId(int id) {
@@ -25,18 +27,20 @@ public class StudentItem {
 		return stId;
 	}
 	
+	// st_fee
 	public int getStFee() {
 		return stFee;
 	}
 	public void setStFee(int stFee) {
 		this.stFee = stFee;
 	}
-	// st_enroll
-	public void setStEnroll(String enroll)	{
-		stEnroll = enroll;
+	
+	// st_date_memo
+	public void setStDateMemo(String dateMemo)	{
+		this.stDateMemo = dateMemo;
 	}
-	public String getStEnroll()	{
-		return stEnroll;
+	public String getStDateMemo()	{
+		return this.stDateMemo;
 	}
 	
 	// st_phone
