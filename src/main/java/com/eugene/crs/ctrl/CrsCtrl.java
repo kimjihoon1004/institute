@@ -110,4 +110,24 @@ public class CrsCtrl extends SqlSessionCtrl{
 		}
 		return success;
 	}
+	
+	public int deleteCrs(int crsId) {
+		int success = -1;
+		SqlSession session = null;
+		
+		try{
+			session = sqlSessionFactory.openSession();
+			success = session.delete("CrsInfor.deleteCrs",crsId);
+			//System.out.println("\n insert " + crsItem.getCrsName() + " success " + success + "\n");
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			session.commit();
+			session.close();
+		}
+		return success;
+	}
 }
