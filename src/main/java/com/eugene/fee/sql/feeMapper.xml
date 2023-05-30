@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <!-- myBatis를 통해 DB를 다룰때 사용할 파일이다. 실행하고자 할 쿼리 모음 -->
+
+<mapper namespace="FeeInfor">
+    <select id="retrieveFeeList" parameterType="string" resultType="FeeItem">
+        SELECT fee_id feeId, fee_date feeDate, st_id stId
+        FROM fee
+        WHERE fee.fee_date BETWEEN CONCAT(#{date}, '-01') AND CONCAT(#{date}, '-31')
+    </select>
+    
+    <insert id="insertFee" parameterType="FeeItem">
+		INSERT INTO fee(st_id, fee_date)
+        VALUES (#{stId}, #{feeDate})
+	</insert>
+    
+    <update id="updateFee" parameterType="FeeItem">
+        UPDATE fee 
+        SET fee_date = #{feeDate}
+        WHERE fee_id = #{feeId}
+    </update>
+    
+</mapper>
