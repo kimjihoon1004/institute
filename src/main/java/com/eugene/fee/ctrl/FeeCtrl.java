@@ -68,4 +68,23 @@ public class FeeCtrl extends SqlSessionCtrl{
 		}
 		return success;
 	}
+	public int deleteFee(int feeId) {
+		int success = -1;
+		SqlSession session = null;
+		
+		try{
+			session = sqlSessionFactory.openSession();
+			success = session.delete("FeeInfor.deleteFee",feeId);
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			session.commit();
+			session.close();
+			System.out.println("delete success!");
+		}
+		return success;
+	}
 }
