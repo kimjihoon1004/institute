@@ -26,4 +26,8 @@
         WHERE fee_id = #{feeId}
     </update>
     
+    <delete id="deleteFee" parameterType="Integer">
+		DELETE FROM fee WHERE fee_id = #{feeId}
+	</delete>
+    
 </mapper>
