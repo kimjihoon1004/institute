@@ -18,6 +18,7 @@
 </head>
 <body>
 	<%
+	request.setCharacterEncoding("utf-8");
 	
 	String day = request.getParameter("day");
 	
@@ -31,7 +32,6 @@
 	if(day == null){
 		String nowYear = Integer.toString(cal.get(Calendar.YEAR));
 		int nowMonth = cal.get(Calendar.MONTH) + 1;
-		
 		
 		if(nowMonth < 10){
 			day = nowYear + "-0" + nowMonth;
@@ -81,30 +81,30 @@
 	
 		<table border="1" bordercolor="blue" width="400" height="100">
 				<tr>
-					<th>이름</th> <th>금액</th>  <th>등록 날짜</th> <th>비고</th> <th>Day</th> <th>편집</th>
+					<th>이름</th> <th>원비</th>  <th>등록일</th> <th>변경일</th> <th>납부일</th> <th>납부</th> <th>편집</th>
 				</tr>
 		<% 
 		for(int i = 0; i < feeItems.size(); i++){
 			int d_day = Integer.parseInt(stItems.get(i).getStDate().substring(8, 10));
 			int d_day_memo=0;
 			
-			String memo_day = stItems.get(i).getStDateMemo();
-			if(memo_day == null){
-				memo_day = "0";
+			int memo_day = stItems.get(i).getStDateMemo();
+			if(memo_day == 0){
+				d_day_memo = d_day;
 			}else{
-				d_day_memo = Integer.parseInt(stItems.get(i).getStDateMemo().substring(8, 10));
+				d_day_memo = stItems.get(i).getStDateMemo();
 			}
 			%>
 			
 			<tr>
 				<td>
-					<%=feeItems.get(i).getStName() %>
+					<%=feeItems.get(i).getStName() %> 
 				</td>
 				<td>
 					<%=feeItems.get(i).getFee() %>
 				</td>
 				<% 
-				if(d_day_memo != 0){
+				if(d_day_memo != d_day){
 					%>
 					<td>
 						<%=d_day %>
@@ -145,7 +145,20 @@
 				%>
 				
 				<td>
-					<%=feeItems.get(i).getFeeDate() %> 
+					<% 
+						if(feeItems.get(i).getFeeDate() == null){
+							%>
+								미납
+							<%
+						}else{
+							%>
+								<%=feeItems.get(i).getFeeDate()%>
+							<%
+						}
+					%>
+				</td>
+				<td>
+					<button onclick="location.href='feePay.jsp?stId=<%=feeItems.get(i).getStId()%>&feeDate=<%=feeItems.get(i).getFeeDate()%>'">납부</button>
 				</td>
 				<td>
 					<button onclick="location.href='feeUpdate.jsp?feeId=<%=feeItems.get(i).getFeeId() %>&stId=<%=feeItems.get(i).getStId() %>&feeDate=<%=feeItems.get(i).getFeeDate() %>'">편집</button>
@@ -153,7 +166,6 @@
 					
 			</tr>
 			<% 
-			
 		}
 		%>
 		

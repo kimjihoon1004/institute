@@ -16,7 +16,8 @@
 		String stId = request.getParameter("stId");
 		String feeId = request.getParameter("feeId");
 		String feeDate = request.getParameter("feeDate");
-	
+		
+		//System.out.println("fee id is:" + feeId);
 	%>
 	<form action="feeUpdateCheck.jsp" method="post">
 	fee date is <input type="date" name="feeDate" value="<%=feeDate %>" />
@@ -24,6 +25,9 @@
 	<input type="hidden" name="feeId" value="<%=feeId %>" />
 	<input type="submit" value="저장"/>
 	</form>
+	
+	<button onclick="location.href='deleteFee.jsp?feeId=<%=feeId%>'">삭제</button>
+	
 	fee update
 </body>
 </html>
