@@ -47,6 +47,25 @@ public class StudentCtrl extends SqlSessionCtrl{
 		
 		return st;
 	}
+
+	public int maxStId() {
+		int temp = 0;
+		SqlSession session = null;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+			temp = session.selectOne("maxStId");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			session.close();
+		}
+		
+		return temp;
+	}
+
 	
 	public String selectStudent(String stId)	{
 		String temp = "";
@@ -71,7 +90,6 @@ public class StudentCtrl extends SqlSessionCtrl{
 		try{
 			session = sqlSessionFactory.openSession();
 			success = session.insert("StudentInfor.insertStudent",stBean);
-			System.out.println("\n insert " + stBean.getStName() + " success " + success + "\n");
 			
 		}
 		catch (Exception e) {
@@ -90,7 +108,7 @@ public class StudentCtrl extends SqlSessionCtrl{
 		
 		try{
 			session = sqlSessionFactory.openSession();
-			success = session.delete("StudentInfor.deleteStudent",stBean);
+			success = session.update("StudentInfor.deleteStudent",stBean);
 		}
 		catch(Exception e){
 			e.printStackTrace();
