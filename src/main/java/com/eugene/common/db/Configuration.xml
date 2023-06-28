@@ -16,7 +16,9 @@
     	<typeAlias alias="LoginItem" type="com.eugene.login.item.LoginItem"/>
         <typeAlias alias="CrsItem" type="com.eugene.crs.item.CrsItem"/>
         <typeAlias alias="StaItem" type="com.eugene.st_attend.item.StaItem"/>
-        <typeAlias alias="TcaItem" type="com.eugene.tc_attend.item.TcaItem"/>
+        <typeAlias alias="TcAttendItem" type="com.eugene.tc_attend.item.TcAttendItem"/>
+        <typeAlias alias="SignItem" type="com.eugene.sign.item.SignItem"/>
+        <typeAlias alias="StfItem" type="com.eugene.st_fee.item.StfItem"/>
   	</typeAliases>
 
     <environments default="development">
@@ -24,9 +26,9 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="org.mariadb.jdbc.Driver" />
-                <property name="url" value="jdbc:mariadb://ashuram.no-ip.biz:3306/institute" />
-                <property name="username" value="inst" />
-                <property name="password" value="inst2023" />
+                <property name="url" value="jdbc:mariadb://127.0.0.1:3306/institute" />
+                <property name="username" value="root"/>
+                <property name="password" value="1234" />
             </dataSource>
         </environment>
     </environments>
@@ -37,6 +39,8 @@
         <mapper resource="com/eugene/login/sql/loginMapper.xml"/>
         <mapper resource="com/eugene/crs/sql/crsMapper.xml"/>
         <mapper resource="com/eugene/st_attend/sql/staMapper.xml"/>
-        <mapper resource="com/eugene/tc_attend/sql/tcaMapper.xml"/>
+        <mapper resource="com/eugene/tc_attend/sql/tcAttendMapper.xml"/>
+        <mapper resource="com/eugene/sign/sql/signMapper.xml"/>
+        <mapper resource="com/eugene/st_fee/sql/stfMapper.xml"/>
     </mappers>
 </configuration>
