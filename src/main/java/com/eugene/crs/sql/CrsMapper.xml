@@ -41,7 +41,7 @@
         VALUES (#{crsName}, #{crsMemo})
     </insert>
     
-    <delete id="deleteCrs" parameterType="Integer">
+    <delete id="deleteCrs" parameterType="CrsItem">
          delete from crs where crs_id=#{crsId}
     </delete>
     
